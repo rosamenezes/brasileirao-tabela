@@ -8,21 +8,27 @@ import {
   import db from '.';
   // import OtherModel from './OtherModel';
   
-  class Example extends Model<InferAttributes<Example>,
-  InferCreationAttributes<Example>> {
+  class TeamModel extends Model<InferAttributes<TeamModel>,
+  InferCreationAttributes<TeamModel>> {
     declare id: CreationOptional<number>;
+    declare teamName: CreationOptional<string>;
   }
   
-  Example.init({
+  TeamModel.init({
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
+    teamName: {
+      field: 'team_name',
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize: db,
-    modelName: 'trybeEval',
+    modelName: 'teams',
     timestamps: false,
   });
   
@@ -37,4 +43,5 @@ import {
   // Example.hasMany(OtherModel, { foreignKey: 'campoC', as: 'campoEstrangeiroC' });
   // Example.hasMany(OtherModel, { foreignKey: 'campoD', as: 'campoEstrangeiroD' });
   
-  export default Example;
+  export default TeamModel;
+  
