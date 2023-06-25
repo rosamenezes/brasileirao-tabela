@@ -14,7 +14,7 @@
 # Dica: Leia a seção Docker e Docker-compose no README para mais informações
 FROM node:16.14-alpine
 
-WORKDIR /app-back
+WORKDIR /app-backend
 
 COPY package.json package-lock.json packages.npm ./
 
