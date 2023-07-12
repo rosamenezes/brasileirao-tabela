@@ -11,17 +11,13 @@ export default class UserService {
 
   public async login(email: string, password: string) {
     const user = await this.userModel.findByEmail(email);
-
     if (!user) {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
-
     const isValidPass = await this.encrypter.compare(password, user.password);
-
     if (!isValidPass) {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
-
     const token = this.tokenGenerator.generate(user);
     return {
       status: 'SUCCESSFUL',

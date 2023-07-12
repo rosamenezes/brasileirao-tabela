@@ -21,9 +21,9 @@ describe('Testa endpoist de Matches', function () {
   it('Testa se retorna partidas em progresso', async function () {
       sinon.stub(Model, 'findAll').resolves(match);
       
-      const response = await chai.request(app).get('/matches?inProgress=true');
-      expect([response.body[0]]).to.deep.equal([InProgress[0]]);
-      expect(response.status).to.be.equal(200);
+      const res = await chai.request(app).get('/matches?inProgress=true');
+      expect([res.body[0]]).to.deep.equal([InProgress[0]]);
+      expect(res.status).to.be.equal(200);
     });
     it('Testa se retorna all matches', async function () {
        chaiHttpResponse = await chai
@@ -34,9 +34,9 @@ describe('Testa endpoist de Matches', function () {
   it('Testa se retorna partidas terminadas', async function () {
     sinon.stub(Model, 'findAll').resolves(match);
 
-    const response = await chai.request(app).get('/matches?inProgress=false');
-    expect([response.body[1]]).to.deep.equal([InProgress[1]]);
-    expect(response.status).to.be.equal(200);
+    const res = await chai.request(app).get('/matches?inProgress=false');
+    expect([res.body[1]]).to.deep.equal([InProgress[1]]);
+    expect(res.status).to.be.equal(200);
   });
 
   afterEach(sinon.restore);
