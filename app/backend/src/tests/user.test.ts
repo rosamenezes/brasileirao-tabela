@@ -20,15 +20,15 @@ const { expect } = chai;
 
          expect(res.body.token).not.to.be.undefined
        expect(res.status).to.be.equal(200)
-       it('Testa return all sem email', async () => {
-         const res = await chai.request(app)
-           .post('/login')
-           .send({ password: '123456' })
-     
-           expect(res.body.message).to.be.equal('All fields must be filled')
-         expect(res.status).to.be.equal(400)
-       })
     });
+    it('Testa return all sem email', async () => {
+      const res = await chai.request(app)
+        .post('/login')
+        .send({ password: '123456' })
+  
+        expect(res.body.message).to.be.equal('All fields must be filled')
+      expect(res.status).to.be.equal(400)
+    })
      it('Testa return all sem password', async () => {
        const res = await chai.request(app)
          .post('/login')
